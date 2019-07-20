@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #tablo,
+        #json {
+            width: 300px;
+            height:200px;
+            margin-top:10px;
+            float:left;
+            margin-right:20px;
+        }
+
+        #text {
+            text-align: right;
+        }
+        #tablom {
+            margin-left:10px;
+            
+        }
+        h1 {
+            text-align: center;
+            font-family: Tahoma;
+            font-size: 16px;
+        }
+
+        input[type='button'] {
+            margin-right: 5px;
+        }
+
+        body {
+            font-family: Tahoma 12px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="notify.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script>
+        jsonArray = [];
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://api.myjson.com/bins/epdzt",
+                dataType: "json",
+                success: Parser
+            });
+            $("#add").click(function () {
+                var str = "location=no, menubar=no,toolbar=no";
+                window.open("operation_page.html", "_self", str);
+            })
+            $("#exit").click(function () {
+                var str = "location=no, menubar=no,toolbar=no";
+                window.open("index.html", "_self", str);
+            })
+        });
+
+        var storage = window.localStorage;
+        var product = function (idp,productnamep, piecep, categoryp, pricep) {
+            this.id=idp;
+            this.productname = productnamep;
+            this.piece = piecep;
+            this.category = categoryp;
+            this.price = pricep;
+        };
+        function save(id, index) {
+            var adet = $("#adet" + index).val();
+            var urun = $.grep(jsonArray, function (x) { return x.id == id })[0];
+            urun.number = adet;
+
+            var price = Number(urun.price.replace(" TL", "")) * Number(adet);
+            var selectedProduct = new product(urun.id,urun.name, urun.number, urun.category, price);
+
+            //Local storage a kaydet
+            selectedProduct.save();
+            $.notify("Sepete eklendi","success");
+        }
+        function Parser(data) {
+
+            jsonArray = data;
+  
+            for (var i = 0; i < jsonArray.length; i++) {
+                // console.log(jsonArray[i].name);
+
+                var tt = "<table id='json'>";
+                tt += "<tr><td>Ürün Adı:</td><td>" + "<input type='text' id='uruna' readonly value='" + jsonArray[i].name.replace("'", "") + "'></td></tr>" +
+                    "<tr><td>Adet:</td><td><input type='number' id='adet" + i + "' value='" + jsonArray[i].number + "'></td></tr>";
+               
+                switch(jsonArray[i].category){
+                    case "1": secim="Oyuncak";
+                    break;
+                    case "2": secim="Televizyon";
+                    break;
+                    case "3": secim="Telefon";
+                    break;
+                }
+
+                    
+
+                tt += "<tr><td>Kategori:</td><td>" + "<input type='text' value=" + secim + " >" + "</td></tr>" +
+                    "<tr><td>Fiyat:</td><td><input type='text' readonly id='fiyat' value='" + jsonArray[i].price + "'></td></tr>" +
+                    "<tr><td><img src=" + jsonArray[i].image + " height='200px' width='200px' style='margin-left:5px;'/></td></tr>" +
+                    "<tr><td colspan='2'><input type='button' class='btn btn-primary' style='margin-left:2px;' value='Ekle' id='insert' onclick=save('" + jsonArray[i].id + "','" + i + "')></td></tr>";
+
+                tt += "</table>";
+                $("#tablom").append(tt);
+
+            }
+        }
+        product.prototype.save = function () {
+            var productObject = this;
+            storage.setItem(productObject.id, JSON.stringify(productObject));
+        }
+    </script>
+
+    <div id="anasayfam">
+        <h1>Ürünler Sayfası</h1>
+        <div id="text">
+            <h4 id="urunsay"></h4>
+            <input type="button" class="btn btn-primary" value="Ödemeye Geç" id="add" />
+            <input type="button" class="btn btn-primary" value="Çıkış Yap" id="exit" />
+        </div>
+        <div id="tablom"></div>
+    </div>
+</body>
+
+</html>

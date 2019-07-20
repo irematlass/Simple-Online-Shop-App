@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <style>
+        body {
+
+            font-family: Tahoma;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: lightblue;
+        }
+
+        tr:nth-child(1) {
+            background-color: burlywood;
+        }
+
+        tr {
+            padding: 50px;
+            margin: 20px;
+        }
+
+        table,
+        h3 {
+            margin: 0px 0px 0px 10px;
+        }
+
+        #toplam {
+            font-family: Tahoma;
+            color: navy;
+            font-size: 14px;
+            margin: 0px 0px 10px 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script>
+        var storage = window.localStorage;
+        var productArray = [];
+        var toplam = 0;
+        function remove(key) {
+            storage.removeItem(key);
+            $("#tablom").html('');
+            window.location.reload(false);
+            //loadProducts();
+        }
+
+        function loadProducts() {
+
+            for (var i = 0; i < storage.length; i++) {
+                var key = storage.key(i);
+                var data = storage.getItem(key);
+                productArray[i] = JSON.parse(data);
+            }
+
+            if (productArray.length > 0) {
+                var tt = "<table>";
+                tt += "<tr><td width='300'>Ürün Adı</td><td width='100'>Kategori</td><td width='50'>Adet</td><td width='50'>Fiyat</td></tr>";
+                for (var i = 0; i < productArray.length; i++) {
+                    toplam += productArray[i].price;
+                    console.log(productArray);
+                    switch (productArray[i].category) {
+                        case "1": kategori = "Oyuncak";
+                            break;
+                        case "2": kategori = "Televizyon";
+                            break;
+                        case "3": kategori = "Telefon";
+                            break;
+                    }
+                    tt += "<tr><td td width='300'>" + productArray[i].productname + "</td><td width='100'>" + kategori + "</td>" +
+                        "<td width='50'>" + productArray[i].piece + "</td><td width='50'>" + productArray[i].price +
+                        "</td><td style='background-color:#fff'><input type='button' style='margin-left:10px;' value='Sil'class='btn btn-primary' id='sil' onclick=remove('" + productArray[i].id + "')></td></tr>";
+                }
+                tt += "</table>";
+                $("#tablom").append(tt);
+            }
+            $("#toplam").append("Toplam Tutar= " + toplam);
+        }
+        $(document).ready(function () {
+            loadProducts();
+        })
+    </script>
+    <h1>
+        <h3>Sepetteki Ürünler</h3>
+    </h1>
+    <div id="tablom"></div><br>
+    <div id="toplam"></div>
+    <input type="button" value="Öde" id="öde" class="btn btn-primary" style="margin-left:10px;" />
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+[
+    {
+        "id"   : "c99980e6-e7fb-458e-bc7f-aa4a05948a63",
+        "name" : "22' Full HD IPS TV Monitor",
+        "number":1,
+        "category":"2",
+        "price": "600 TL",
+        "image": "http://www.lg.com/uk/images/monitors/md05601498/Global_22MT48DF_Gallery_350x350.jpg"
+    },
+    {
+        "id"   : "5f9d2656-e27a-4806-8969-c21d94480b10",        
+        "name" : "Series 6 50 inch KU6000 UHD LED~ TV",
+        "number":1,
+        "category":"2",
+        "price": "2500 TL",
+        "image": "http://images.samsung.com/is/image/samsung/au_UA50KU6000WXXY_008_Front_black?$PD_GALLERY_JPG$"
+    },
+    {
+        "id"   : "86e1a986-f729-4261-abf4-3188d0133048",        
+        "name" : "Iphone7",
+        "number":1,
+        "category":"3",
+        "price": "3000 TL",
+        "image": "https://pisces.bbystatic.com/BestBuy_US/store/ee/2016/mob/pr/sol-3866-cell-accessories/flex-cell-access2-iphone7.jpg;maxHeight=333;maxWidth=333"
+    },
+    {
+        "id"   : "b17a987b-bceb-46f1-9778-f2124291b288",        
+        "name" : "Samsung Galaxy S8",
+        "number":1,
+        "category":"3",
+        "price": "3000 TL",
+        "image": "http://www.samsung.com/global/galaxy/galaxy-s8/images/gallery/galaxy-s8_gallery_front_black_s4.png"
+    },
+    {
+        "id"   : "154b3446-59f1-4802-885c-ad6da155355f",        
+        "name" : "Toy Story Buzz Lightyear Talking Action Figure",
+        "number":1,
+        "category":"1",
+        "price": "250 TL",
+        "image": "https://truimg.toysrus.com/product/images/toy-story-buzz-lightyear-talking-action-figure--E7B6386E.zoom.jpg?fit=inside|480:480"
+    },
+    {
+        "id"   : "849a56ed-260a-47e5-b760-a3e2f79c5399", 
+        "name" : "Fisher-Price Smart Interactive Bear Toy",
+        "number":1,
+        "category":"1",
+        "price": "100 TL",
+        "image": "https://truimg.toysrus.com/product/images/fisher-price-smart-interactive-bear-toy--6027E0FE.zoom.jpg?fit=inside|960:960"
+    },
+    {
+        "id"   : "f273431f-2b34-40ed-b58d-994da34c0037", 
+        "name" : "Robot",
+        "number":1,
+        "category":"1",
+        "price": "100 TL",
+        "image": "http://i.ebayimg.com/00/s/MzQ2WDM0Ng==/z/cpUAAOSw91NTs84-/$_32.JPG?set_id=8800005007"
+    },
+    {
+        "id"   : "f3331d7c-02a6-4df2-93bb-83628b1cf9ff", 
+        "name" : "Weston 40' HD LED TV",
+        "number":1,
+        "category":"2",
+        "price": "2000 TL",
+        "image": "http://im.rediff.com/gadget/2015/feb/Weston.jpg"
+    },
+    {
+        "id"   : "5a294f95-975e-4bbd-9840-e472b2056ce9", 
+        "name" : "RCA 50' Class 4K (2160P) LED TV",
+        "number":1,
+        "category":"2",
+        "price": "4000 TL",
+        "image": "https://i5.walmartimages.com/asr/e45bc40e-5810-415e-a092-b3348b2b754c_1.efcdbbad0a6340ec186037e5ac2f0cda.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"
+    },
+    {
+        "id"   : "d5b30f07-7056-4760-afb4-98d36aa1b253", 
+        "name" : "Zepo 31.5' Curve With WiFi Android Smart HD LED TV",
+        "number":1,
+        "category":"2",
+        "price": "2000 TL",
+        "image": "http://imshopping.rediff.com/imgshop/800-1280/shopping/pixs/19636/l/led_5862029fb3e7c._zepo-31-5-curve-with-wifi-android-smart-hd-led-tv.jpg"
+    }
+]
